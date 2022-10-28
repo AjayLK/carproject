@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict The Price of Car</title>
+    <style>
+        body{background-color:rgba(143, 97, 97, 0.573);}
+        h1{color:rgb(227, 24, 119);}
+        p{color:rgb(218, 15, 15);}
+     </style>
+      <!-- <style>
+        p {
+          background-image: url('C:\Users\HP\Desktop\Ajay Program\Velocity data science\Datasets\App_model\Flask_auto_model_building\range-rover-black-hd.jpg');
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+</head>
+
+<body style="background-color: rgb(229, 237, 239);">
+
+    <h1> Predicted  Price of MyCar </h1>
+    <form method="GET" action="/predict_car_price">
+
+        <label>Symboling:</label>
+        <input type = "text" name = "symboling">
+        </select>
+        <label style="padding: 40px">Normalized_losses: </label>
+        <input type="text" name = 'normalized_losses'>
+        </select>
+
+
+        <br>
+        <br>
+
+        <label>Fuel_type:</label>
+        <label>Diesel:</label> <input type = "radio" name= "fuel_type" value = "diesel">
+        <label>Gas:</label> <input type = "radio" name= "fuel_type" value = "gas">
+
+        <label style="padding: 20px">Aspiration:</label>
+        <label>Std:</label> <input type = "radio" name= "aspiration" value = "std">
+        <label>Turbo:</label> <input type = "radio" name= "aspiration" value = "turbo">
+
+        <label style="padding: 20px">Num_of_doors:</label>
+        <label>Four:</label> <input type = "radio" name= "num_of_doors" value = "four">
+        <label>Two:</label> <input type = "radio" name= "num_of_doors" value = "two">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Drive_wheels:</label>
+        <label>FWD:</label> <input type = "radio" name= "drive_wheels" value = "fwd">
+        <label>RWD:</label> <input type = "radio" name= "drive_wheels" value = "rwd">
+        <label>4WD:</label> <input type = "radio" name= "drive_wheels" value = "4wd">
+        
+        <label style="padding: 20px">Engine_location:</label>
+        <label>FRONT:</label> <input type = "radio" name= "engine_location" value = "front">
+        <label>REAR:</label> <input type = "radio" name= "engine_location" value = "rear">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Wheel_base:</label>
+        <input type = "text" name = "wheel_base">
+        </select>
+
+        <label style="padding: 40px">Length:</label>
+        <input type = "text" name = "length">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Width:</label>
+        <input type = "text" name = "width">
+        </select>
+
+        <label style="padding: 40px">Height:</label>
+        <input type = "text" name = "height">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Curb_weight:</label>
+        <input type = "text" name = "curb_weight">
+        </select>
+
+
+        <label style="padding: 40px">Num_of_cylinders:</label>
+        <select name = "num_of_cylinders">
+            <option value = "two">Two</option>
+            <option value = "three">Three</option>
+            <option value = "four">Four</option>
+            <option value = "five">Five</option>
+            <option value = "six">Six</option>
+            <option value = "eight">Eight</option>
+            <option value = "twelve">Twelve</option>
+        </select>
+    
+
+        <br>
+        <br>
+
+        <label>Engine_size:</label>
+        <input type = "text" name = "engine_size">
+        </select>
+
+        <label style="padding: 40px">Bore:</label>
+        <input type = "text" name = "bore">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Stroke:</label>
+        <input type = "text" name = "stroke">
+        </select>
+
+        <label style="padding: 40px">Compression_ratio:</label>
+        <input type = "text" name = "compression_ratio">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Horsepower:</label>
+        <input type = "text" name = "horsepower">
+        </select>
+
+        <label style="padding: 40px">Peak_rpm:</label>
+        <input type = "text" name = "peak_rpm">
+        </select>
+
+        <br>
+        <br>
+
+        <label>City_mpg:</label>
+        <input type = "text" name = "city_mpg">
+        </select>
+
+        <br>
+        <br>
+
+        <label>Highway_mpg:</label>
+        <input type = "text" name = "highway_mpg">
+        </select>
+
+        <label style="padding: 40px">Make:</label>
+        <select name = "make">
+            <option value = "audo">Audo</option>
+            <option value = "volvo">Volvo</option>
+            <option value = "toyota">Toyota</option>
+            <option value = "nissan">Nissan</option>
+            <option value = "honda">Honda</option>
+            <option value = "bmw">BMW</option>
+            <option value = "jaguar">Jaguar</option>
+            <option value = "renault">Renault</option>
+            <option value = "chevrolet">Chevrolet</option>
+        </select>
+
+        <label style="padding: 40px">Body_style:</label>
+        <select name = "body_style">
+            <option value = "sedan">sedan</option>
+            <option value = "hatchback">hatchback</option>
+            <option value = "wagon">wagon</option>
+            <option value = "hardtop">hardtop</option>
+            <option value = "convertible">convertible</option>
+        </select>
+
+        <br>
+        <br>
+            
+        <label>Engine_type:</label>
+        <select name = "engine_type">
+            <option value = "ohc">ohc</option>
+            <option value = "ohcf">ohcf</option>
+            <option value = "ohcv">ohcv</option>
+            <option value = "dohc">dohc</option>
+            <option value = "l">l</option>
+            <option value = "rotor">rotor</option>
+            <option value = "dohcv">dohcv</option>
+        </select>
+            
+        <label style="padding: 40px">Fuel_system:</label>
+        <select name = "fuel_system">
+            <option value = "mpfi">mpfi</option>
+            <option value = "2bbl">2bbl</option>
+            <option value = "idi">idi</option>
+            <option value = "1bbl">1bbl</option>
+            <option value = "spdi">spdi</option>
+            <option value = "4bbl">4bbl</option>
+            <option value = "mfi">mfi</option>
+            <option value = "spfi">spfi</option>
+        </select>
+
+        <br>
+        <br>
+
+        <input type = "submit" value="SUBMIT">
+
+        <br>
+
+        <p>My own car price is <b> {{ prediction }} /- Rs.</b> Only </p>
+
+
+    </form>
+
+
+</body>
+</html>
